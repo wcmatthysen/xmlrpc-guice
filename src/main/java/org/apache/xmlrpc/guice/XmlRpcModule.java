@@ -19,7 +19,7 @@ public abstract class XmlRpcModule extends PrivateModule implements LinkedHandle
     private MapBinder<String, Method> binder;
 
     @Override
-    protected void configure() {
+    protected final void configure() {
         try {
             this.binder = MapBinder.newMapBinder(binder(), String.class, Method.class);
             bind(RequestProcessorFactoryFactory.class).to(GuicedRequestProcessorFactoryFactory.class);
@@ -30,7 +30,7 @@ public abstract class XmlRpcModule extends PrivateModule implements LinkedHandle
         }
     }
     
-    protected void exposeAs(String named) {
+    protected final void exposeAs(String named) {
         bind(GuicedXmlRpcServlet.class).annotatedWith(Names.named(named)).to(GuicedXmlRpcServlet.class);
         expose(GuicedXmlRpcServlet.class).annotatedWith(Names.named(named));
     }
@@ -38,7 +38,7 @@ public abstract class XmlRpcModule extends PrivateModule implements LinkedHandle
     protected abstract void configureHandlers() throws NoSuchMethodException;
 
     @Override
-    public HandlerMappingBuilderStub map(final String methodName) {
+    public final HandlerMappingBuilderStub map(final String methodName) {
         return new HandlerMappingBuilderStub() {
             @Override
             public void to(Method method) {

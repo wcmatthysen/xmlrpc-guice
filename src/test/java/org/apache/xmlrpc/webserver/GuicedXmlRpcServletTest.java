@@ -3,7 +3,6 @@ package org.apache.xmlrpc.webserver;
 import com.google.inject.name.Named;
 import java.util.EnumSet;
 import com.google.inject.servlet.GuiceFilter;
-import com.google.inject.Key;
 import com.google.inject.name.Names;
 import com.google.common.collect.ImmutableMap;
 import com.google.inject.Guice;
